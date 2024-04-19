@@ -6,3 +6,9 @@
       pip install .
       ```
     - if something doesn't work about the code, please consider removing diffusers directory and start with cloning their repo.  
+
+
+2. Dataset Format:
+    1) What they used for their own example (Pokemon) was from [hugging face hub](https://huggingface.co/datasets/lambdalabs/pokemon-blip-captions).
+   - I have requested accessibility to their file to see the structure.
+    2) Alternatively, we can refer to the file [`create_dataset.md`](link to the file) for using our dataset locally.
