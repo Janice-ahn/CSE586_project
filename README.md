@@ -1,5 +1,6 @@
 1. Before starting the test:
     - We referenced [LoRA Hugging Face instruction](https://huggingface.co/docs/diffusers/main/en/training/lora).
+    - Start with following command
       ```bash
         cd fine_tuning_diffuser
         pip install .
