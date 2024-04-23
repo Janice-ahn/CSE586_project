@@ -20,14 +20,19 @@ pipeline.load_lora_weights("./out_5", weight_name="pytorch_lora_weights.safetens
 # Generating 50 images
 num_cols = 1
 num_rows = 1
-prompt = ["A photograph of a farmer"] * num_cols
+# prompt = ["A photograph of a housekeeper"] * num_cols
+prompts = ["A photograph of a nurse","A photograph of a housekeeper","A photograph of a cheerleader", "A photograph of an engineer", "A photograph of a farmer", "A photograph of a Pilot"]
 
-for j in range(10):
-  all_images = []
-  for i in range(num_rows):
-    images = pipeline(prompt).images
-    all_images.extend(images)
 
-  grid = image_grid(all_images, rows=num_rows, cols=num_cols)
-  file_path = './image_result2/' + 'farmer' + str(j) + '.png'
-  grid.save(file_path)
+for prompt in prompts:
+  for j in range(50):
+    all_images = []
+    for i in range(num_rows):
+      images = pipeline(prompt).images
+      all_images.extend(images)
+
+    grid = image_grid(all_images, rows=num_rows, cols=num_cols)
+    words = prompt.split()
+    
+    file_path = '../../../fine_tune_test_results/image_result3/' + words[-1] + str(j) + '.png'
+    grid.save(file_path)
