@@ -14,7 +14,7 @@ def image_grid(imgs, rows, cols):
     return grid
 
 pipeline = AutoPipelineForText2Image.from_pretrained("CompVis/stable-diffusion-v1-4", torch_dtype=torch.float16).to("cuda")
-pipeline.load_lora_weights("./out_5", weight_name="pytorch_lora_weights.safetensors")
+pipeline.load_lora_weights("./output", weight_name="pytorch_lora_weights.safetensors")
 
 
 # Generating 50 images
@@ -25,7 +25,7 @@ prompts = ["A photograph of a nurse","A photograph of a housekeeper","A photogra
 
 
 for prompt in prompts:
-  for j in range(50):
+  for j in range(1):
     all_images = []
     for i in range(num_rows):
       images = pipeline(prompt).images
@@ -34,5 +34,5 @@ for prompt in prompts:
     grid = image_grid(all_images, rows=num_rows, cols=num_cols)
     words = prompt.split()
     
-    file_path = '../../../fine_tune_test_results/image_result3/' + words[-1] + str(j) + '.png'
+    file_path = '../../../fine_tune_test_results/image_result4/' + words[-1] + str(j) + '.png'
     grid.save(file_path)
